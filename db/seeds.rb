@@ -14,6 +14,6 @@ sections = ['The night wore his wolf suit and made mischief of one kind and anot
 Story.create(title: "Where the Wild Things Are", user_id: 1)
 
 for i in 0..(sections.length / 3)
-  p = Page.create(content: '<p>' + sections.slice(i*3, 3).join('</p><p>') + '</p>', story_id: 1, page_number: i)
+  p = Page.create(content: sections.slice(i*3, 3).join('\n'), story_id: 1, page_number: i)
   Medium.create(content: File.open(Rails.root + 'db/sample.mp3'), page_id: p.id)
 end
