@@ -44,4 +44,7 @@ group :development, :production do
   gem 'bootsnap'
 end
 
+gem 'rack-cors', :require => 'rack/cors'
+
+
 gem 'paperclip'

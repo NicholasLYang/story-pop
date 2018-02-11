@@ -1,11 +1,9 @@
 Types::QueryType = GraphQL::ObjectType.define do
   name "Query"
 
-
-  field :allStories, !types[Types::StoryType] do
-    description "Get all stories"
-    resolve ->(obj, args, ctx) {
-      Story.all
-    }
+  field :storyByID do
+    type Types::StoryType
+    argument :id, !types.ID
+    resolve -> (obj, args, ctx) { Story.find(args["id"]) }
   end
 end
