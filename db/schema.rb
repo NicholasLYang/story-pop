@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180210164415) do
+ActiveRecord::Schema.define(version: 20180210191506) do
 
   create_table "media", force: :cascade do |t|
-    t.integer "post_id"
+    t.integer "page_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "content_file_name"
@@ -22,15 +22,15 @@ ActiveRecord::Schema.define(version: 20180210164415) do
     t.datetime "content_updated_at"
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "pages", force: :cascade do |t|
     t.integer "story_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "page_number"
   end
 
   create_table "stories", force: :cascade do |t|
     t.string "title"
-    t.integer "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"

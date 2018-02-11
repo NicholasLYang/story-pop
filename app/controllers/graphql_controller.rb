@@ -1,13 +1,26 @@
 class GraphqlController < ApplicationController
   def execute
-    variables = ensure_hash(params[:variables])
-    query = params[:query]
-    operation_name = params[:operationName]
+    if params[:operations].present?
+      operations = ensure_hash(params[:operations])
+      variables = {
+        "input" => operations[:variables].
+                     merge({"file" => params["variables.file"]})
+      }
+      query     = operations[:query]
+    else
+      variables = ensure_hash(params[:variables])
+      query     = params[:query]
+    end
     context = {
       # Query context goes here, for example:
       # current_user: current_user,
     }
-    result = StoryPopSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = StoryPopSchema.execute(
+      query,
+      variables: variables,
+      context: context,
+#      operation_name: operation_name
+    )
     render json: result
   end
 
