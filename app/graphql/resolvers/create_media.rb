@@ -5,7 +5,7 @@ class Resolvers::CreateMedia < GraphQL::Function
   argument :content, !Types::Scalars::FileType
 
   # return type from the mutation
-  type Types::MediaType
+  type Types::MediumType
 
   # the mutation method
    # _obj - is parent object, which in this case is nil
